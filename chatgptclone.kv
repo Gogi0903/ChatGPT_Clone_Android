@@ -13,19 +13,26 @@ Interface:
         text: 'ChatGPT Clone'
         size_hint: 1, 0.05
 
-    ScrollView:
+    BgBoxLayout:
 
-        id: conversationfield
         hex_code: '#f2deff'
         alpha: 0.2
         size_hint: 1, 0.8
 
-        BgBoxLayout:
+        ScrollView:
 
+            id: conversationfield
             hex_code: '#f2deff'
             alpha: 0.2
-            size_hint_y: None
-            height: self.minimum_height
+            size_hint: 1, 0.8
+
+            BgStackLayout:
+
+                id: stackLayout
+                size_hint_y: None
+                height: self.minimum_height
+                hex_code: '#1E45F3'
+                alpha: 0.2
 
     TextInput:
 
@@ -45,4 +52,5 @@ Interface:
         Button:
 
             text: 'Töröl'
+            on_release: root.clear()
 

@@ -1,24 +1,35 @@
 from kivy.app import App
 from kivy.clock import Clock
-from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
 from Custom_Layouts import BgBoxLayout
 
 
 class Interface(BgBoxLayout):
 
     def __init__(self, **kwargs):
-
         super().__init__(**kwargs)
-        Clock.schedule_once(callback=self.send)
 
-    def send(self, dt):
+    def send(self):
 
-        txt = BoxLayout(text=self.ids.textInput.text)
-        self.ids.conversationfield.add_widget(txt)
+        text = self.ids.textInput.text
+        widget = Label(text=text)
+        self.ids.stackLayout.add_widget(widget)
+        self.ids.textInput.text = ''
+
+    def answer(self):
+        text = 'Ez lesz a chatgpt válasza'
+        widget = Label(text=text)
+        self.ids.stackLayout.add_widget(widget)
+        self.ids.textInput.text = ''
+
+    def clear(self):
+
+        self.ids.stackLayout.clear_widgets()
 
 
 class ChatGPTCloneApp(App):
     ...
 
 
-ChatGPTCloneApp().run()
+if __name__ == '__main__':
+    ChatGPTCloneApp().run()
