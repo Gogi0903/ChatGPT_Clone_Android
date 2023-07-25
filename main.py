@@ -10,9 +10,7 @@ class Interface(BgBoxLayout):
 
     def send(self):
 
-        text = self.ids.textInput.text
-        widget = Label(text=text)
-        self.ids.stackLayout.add_widget(widget)
+        self.ids.stackLayout.add_widget(Label(text=self.ids.textInput.text))
         self.ids.textInput.text = ''
 
     def answer(self):

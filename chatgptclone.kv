@@ -1,38 +1,28 @@
 #: import BgBoxLayout Custom_Layouts
+#: import BgStackLayout Custom_Layouts
 
 Interface:
 
     orientation: 'vertical'
-    padding: [10, 10, 10, 10]
-    spacing: 5
-    hex_code: '#f2deff'
-    alpha: 0.2
+    padding: [dp(10), dp(10), dp(10), dp(10)]
+    spacing: dp(5)
 
     Label:
 
         text: 'ChatGPT Clone'
         size_hint: 1, 0.05
 
-    BgBoxLayout:
+    ScrollView:
 
-        hex_code: '#f2deff'
-        alpha: 0.2
         size_hint: 1, 0.8
+        bar_margin: 20
+        bar_width: 15
 
-        ScrollView:
+        BgBoxLayout:
 
-            id: conversationfield
-            hex_code: '#f2deff'
-            alpha: 0.2
-            size_hint: 1, 0.8
-
-            BgStackLayout:
-
-                id: stackLayout
-                size_hint_y: None
-                height: self.minimum_height
-                hex_code: '#1E45F3'
-                alpha: 0.2
+            id: stackLayout
+            size_hint_y: None
+            height: self.minimum_height
 
     TextInput:
 
