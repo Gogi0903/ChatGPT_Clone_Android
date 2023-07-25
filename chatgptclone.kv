@@ -1,0 +1,48 @@
+#: import BgBoxLayout Custom_Layouts
+
+Interface:
+
+    orientation: 'vertical'
+    padding: [10, 10, 10, 10]
+    spacing: 5
+    hex_code: '#f2deff'
+    alpha: 0.2
+
+    Label:
+
+        text: 'ChatGPT Clone'
+        size_hint: 1, 0.05
+
+    ScrollView:
+
+        id: conversationfield
+        hex_code: '#f2deff'
+        alpha: 0.2
+        size_hint: 1, 0.8
+
+        BgBoxLayout:
+
+            hex_code: '#f2deff'
+            alpha: 0.2
+            size_hint_y: None
+            height: self.minimum_height
+
+    TextInput:
+
+        id: textInput
+        hint_text: 'Ide írhatod a kérésed/kérdésed'
+        size_hint: 1, 0.1
+
+    BgBoxLayout:
+
+        size_hint: 1, 0.05
+
+        Button:
+
+            text: 'Küld'
+            on_release: root.send()
+
+        Button:
+
+            text: 'Töröl'
+

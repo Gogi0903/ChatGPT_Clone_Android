@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from kivy.app import App
+from kivy.clock import Clock
+from kivy.uix.boxlayout import BoxLayout
+from Custom_Layouts import BgBoxLayout
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Interface(BgBoxLayout):
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    def __init__(self, **kwargs):
+
+        super().__init__(**kwargs)
+        Clock.schedule_once(callback=self.send)
+
+    def send(self, dt):
+
+        txt = BoxLayout(text=self.ids.textInput.text)
+        self.ids.conversationfield.add_widget(txt)
+
+
+class ChatGPTCloneApp(App):
+    ...
+
+
+ChatGPTCloneApp().run()
