@@ -1,5 +1,4 @@
 from kivy.app import App
-from kivy.clock import Clock
 from kivy.uix.label import Label
 from Custom_Layouts import BgBoxLayout
 
