@@ -1,28 +1,32 @@
 #: import BgBoxLayout Custom_Layouts
-#: import BgStackLayout Custom_Layouts
 
 Interface:
 
     orientation: 'vertical'
     padding: [dp(10), dp(10), dp(10), dp(10)]
     spacing: dp(5)
+    hex_code: '#574bc9'
+    alpha: 0.2
 
-    Label:
 
-        text: 'ChatGPT Clone'
+    BgBoxLayout:
+
+        hex_code: '#574bc9'
+        alpha: 0.2
         size_hint: 1, 0.05
+
+        Label:
+
+            text: 'ChatGPT Clone'
 
     ScrollView:
 
-        size_hint: 1, 0.8
-        bar_margin: 20
         bar_width: 15
 
         BgBoxLayout:
 
+            orientation: 'vertical'
             id: stackLayout
-            size_hint_y: None
-            height: self.minimum_height
 
     TextInput:
 
@@ -30,7 +34,7 @@ Interface:
         hint_text: 'Ide írhatod a kérésed/kérdésed'
         size_hint: 1, 0.1
 
-    BgBoxLayout:
+    BoxLayout:
 
         size_hint: 1, 0.05
 

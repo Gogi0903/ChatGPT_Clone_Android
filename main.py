@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from Custom_Layouts import BgBoxLayout
 
@@ -9,8 +10,10 @@ class Interface(BgBoxLayout):
         super().__init__(**kwargs)
 
     def send(self):
-
-        self.ids.stackLayout.add_widget(Label(text=self.ids.textInput.text))
+        txt_label = Label(text=self.ids.textInput.text)
+        new_txt_box = BgBoxLayout(orientation='vertical', hex_code='#574bc9', alpha=0.2, padding=(10, 10, 10, 10))
+        new_txt_box.add_widget(txt_label)
+        self.ids.stackLayout.add_widget(new_txt_box)
         self.ids.textInput.text = ''
 
     def answer(self):
