@@ -10,8 +10,9 @@ class Interface(BgBoxLayout):
         super().__init__(**kwargs)
 
     def send(self):
+
         new_txt_box = BgAnchorLayout(hex_code='#574bc9', alpha=0.2, size_hint=(.9, None),
-                                     height=self.minimum_height, anchor_x='right')
+                                     height=self.minimum_height)
         new_txt_box.add_widget(Label(text=self.ids.textInput.text))
         self.ids.conversation.add_widget(new_txt_box)
         self.ids.textInput.text = ''

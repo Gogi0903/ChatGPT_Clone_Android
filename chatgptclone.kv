@@ -19,10 +19,17 @@ Interface:
 
             text: 'ChatGPT Clone'
 
-    BgBoxLayout:
+    ScrollView:
 
-        id: conversation
-        orientation: 'vertical'
+        size_hint: 1, 0.9
+        bar_margin: 20
+        bar_width: 15
+
+        BgBoxLayout:
+
+            id: conversation
+            spacing: 3
+            orientation: 'vertical'
 
     TextInput:
 
