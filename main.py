@@ -1,7 +1,10 @@
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from Custom_Layouts import BgBoxLayout, BgAnchorLayout
+
+Window.size = (540, 800)
 
 
 class Interface(BgBoxLayout):
@@ -9,7 +12,7 @@ class Interface(BgBoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def send(self):
+    def question(self):
 
         new_txt_box = BgAnchorLayout(hex_code='#574bc9', alpha=0.2, size_hint=(.9, None),
                                      height=self.minimum_height)
