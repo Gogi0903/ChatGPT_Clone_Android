@@ -1,5 +1,6 @@
 import openai
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.core.window import Window
 from Custom_Layouts import BgBoxLayout
 
@@ -20,6 +21,7 @@ class Interface(BgBoxLayout):
 
     @staticmethod
     def openai_authenticate(keyfile):
+        # az API key-t olvassa ki egy külön txt fileból
         with open(keyfile) as f:
             api_key = f.read().strip('\n')
             assert api_key.startswith('sk-')
@@ -33,11 +35,16 @@ class Interface(BgBoxLayout):
         self.ids.input_text.text = str()
         return question
 
-    def msg_to_chatgpt(self):
+    def users_msg(self):
+        # a user kérdését kiírja a képernyőre és a GPTnek küldött csomaghoz adja
         current_question = self.question()
-        self.ids.conversation.text += f"- Én:\n{current_question}\n\n"
+        self.ids.conversation.text += (f"Én:\n- {current_question}"
+                                       f"\n______________________\n")
         self.messages.append({'role': 'user', 'content': current_question})
         self.questions.append(current_question)
+
+    def chatgpt_msg(self, dt):
+        # elküldi a GPT-nek a csomagot és kiírja a választ a képernyőre
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             messages=self.messages,
@@ -47,7 +54,13 @@ class Interface(BgBoxLayout):
         current_response = response.choices[0]['message']['content']
         self.bot_responses.append(current_response)
         self.messages.append({'role': 'assistant', 'content': current_response})
-        self.ids.conversation.text += f"- ChatGPT:\n{current_response}\n\n"
+        self.ids.conversation.text += (f"ChatGPT:\n- {current_response}"
+                                       f"\n______________________\n")
+
+    def msg_to_chatgpt(self):
+        # ez a funtion késlelteti a GPT válaszát, így a két fél szövege egymás után jelenik meg és nem egyszerre
+        self.users_msg()
+        Clock.schedule_once(self.chatgpt_msg, 1.5)
 
 
 class CloneTestApp(App):
