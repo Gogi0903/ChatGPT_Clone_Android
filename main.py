@@ -36,7 +36,7 @@ class Interface(BgBoxLayout):
         return question
 
     def users_msg(self):
-        # a user kérdését kiírja a képernyőre és a GPTnek küldött csomaghoz adja
+        # a user kérdését kiírja a képernyőre és a GPTnek küldendő csomaghoz adja
         current_question = self.question()
         self.ids.conversation.text += (f"Én:\n- {current_question}"
                                        f"\n______________________\n")
@@ -44,7 +44,7 @@ class Interface(BgBoxLayout):
         self.questions.append(current_question)
 
     def chatgpt_msg(self, dt):
-        # elküldi a GPT-nek a csomagot és kiírja a választ a képernyőre
+        # elküldi a GPT-nek szánt csomagot és kiírja a választ a képernyőre
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             messages=self.messages,
@@ -58,7 +58,7 @@ class Interface(BgBoxLayout):
                                        f"\n______________________\n")
 
     def msg_to_chatgpt(self):
-        # ez a funtion késlelteti a GPT válaszát, így a két fél szövege egymás után jelenik meg és nem egyszerre
+        # ez a function késlelteti a GPT válaszát, így a két fél szövege egymás után jelenik meg és nem egyszerre
         self.users_msg()
         Clock.schedule_once(self.chatgpt_msg, 1)
 
