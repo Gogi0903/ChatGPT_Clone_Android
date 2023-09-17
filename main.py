@@ -4,7 +4,7 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from Custom_Layouts import BgBoxLayout
 
-Window.size = (540, 800)
+# Window.size = (540, 800)
 
 file = "./key.txt"
 
@@ -60,7 +60,7 @@ class Interface(BgBoxLayout):
     def msg_to_chatgpt(self):
         # ez a funtion késlelteti a GPT válaszát, így a két fél szövege egymás után jelenik meg és nem egyszerre
         self.users_msg()
-        Clock.schedule_once(self.chatgpt_msg, 1.5)
+        Clock.schedule_once(self.chatgpt_msg, 1)
 
 
 class CloneTestApp(App):
