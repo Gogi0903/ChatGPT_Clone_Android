@@ -4,7 +4,6 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from custom_layouts import BgBoxLayout
 
-# Window.size = (540, 800)
 
 file = "./key.txt"
 
