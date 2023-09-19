@@ -1,0 +1,48 @@
+#: import BgBoxLayout custom_layouts
+
+Interface:
+    hex_code: '#00BE72'
+    alpha: 0.2
+    padding: dp(10), dp(10)
+    spacing: 10
+    orientation: 'vertical'
+
+    Label:
+        text: 'ChatGPT Clone'
+        size_hint_y: None
+        size: self.texture_size
+
+    ScrollView:
+        id: ScrollView
+        size_hint: 1, .7
+        do_scroll_y: True
+        bar_width: dp(15)
+
+        TextInput:
+            id: conversation
+            background_color: [39, 239, 245, 0.5]
+            size_hint: 1, None
+            height: max( (len(self._lines)+1) * self.line_height, ScrollView.height)
+
+
+    BgBoxLayout:
+        hex_code: '#008E72'
+        alpha: 0.2
+        spacing: 5
+        size_hint: 1, .25
+        orientation: 'vertical'
+
+        TextInput:
+            id: input_text
+            hint_text: 'Ide írhatod az üzeneted'
+
+        BgBoxLayout:
+            spacing: 5
+            size_hint_y: None
+            height: self.minimum_height
+
+            Button:
+                text: 'Küld'
+                size_hint_y: None
+                height: dp(40)
+                on_press: root.msg_to_chatgpt()
