@@ -1,7 +1,6 @@
 import openai
 from kivy.app import App
 from kivy.clock import Clock
-from kivy.core.window import Window
 from custom_layouts import BgBoxLayout
 
 
