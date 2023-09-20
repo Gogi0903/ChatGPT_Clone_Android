@@ -19,6 +19,7 @@ class Interface(BgBoxLayout):
         Clock.schedule_once(self.set_conversation_readonly, 0.1)
 
     def set_conversation_readonly(self, dt):
+        # a párbeszédablakot csak olvashatóra állítja
         self.ids.conversation.readonly = True
 
     @staticmethod
