@@ -16,6 +16,10 @@ class Interface(BgBoxLayout):
         self.messages = list()
         system_prompt = 'Answer as concisely as possible in hungarian language.'
         self.messages.append({'role': 'system', 'content': system_prompt})
+        Clock.schedule_once(self.set_conversation_readonly, 0.1)
+
+    def set_conversation_readonly(self, dt):
+        self.ids.conversation.readonly = True
 
     @staticmethod
     def openai_authenticate(keyfile):
