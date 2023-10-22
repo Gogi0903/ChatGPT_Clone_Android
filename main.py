@@ -66,9 +66,9 @@ class Interface(BgBoxLayout):
         Clock.schedule_once(self.chatgpt_msg, 1)
 
 
-class CloneTestApp(App):
+class ChatGPTClone(App):
     ...
 
 
 if __name__ == '__main__':
-    CloneTestApp().run()
+    ChatGPTClone().run()
