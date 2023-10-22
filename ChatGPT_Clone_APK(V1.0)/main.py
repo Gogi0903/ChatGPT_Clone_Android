@@ -4,7 +4,7 @@ from kivy.clock import Clock
 from custom_layouts import BgBoxLayout
 
 
-file = "./key.txt"
+file = "../key.txt"
 
 
 class Interface(BgBoxLayout):
@@ -61,9 +61,9 @@ class Interface(BgBoxLayout):
         Clock.schedule_once(self.chatgpt_msg, 1)
 
 
-class CloneTestApp(App):
+class ChatGPTCloneApp(App):
     ...
 
 
 if __name__ == '__main__':
-    CloneTestApp().run()
+    ChatGPTCloneApp().run()
